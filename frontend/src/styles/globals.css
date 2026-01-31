@@ -1,0 +1,182 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  }
+  code {
+    font-family: ui-monospace, 'Cascadia Code', 'Monaco', 'Courier New', monospace;
+  }
+}
+
+/* ============================================
+   REACT-DIFF-VIEW CUSTOMIZATION
+   ============================================ */
+
+/* Override react-diff-view colors for dark mode */
+.diff {
+  --diff-gutter-background: #161b22;
+  --diff-gutter-insert-background: rgba(63, 185, 80, 0.2);
+  --diff-gutter-delete-background: rgba(248, 81, 73, 0.2);
+  --diff-code-background: #0d1117;
+  --diff-code-insert-background: rgba(63, 185, 80, 0.15);
+  --diff-code-delete-background: rgba(248, 81, 73, 0.15);
+  --diff-gutter-text-color: #6e7681;
+  --diff-code-text-color: #c9d1d9;
+}
+
+/* Gutter styling */
+.diff-gutter {
+  background-color: #161b22;
+  color: #6e7681;
+  text-align: right;
+  padding: 0 8px;
+  min-width: 50px;
+  border-right: 1px solid #30363d;
+  user-select: none;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+}
+
+/* In unified view, make first gutter column minimal and invisible */
+.diff-unified td.diff-gutter:nth-child(1) {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  font-size: 0;
+  color: transparent;
+  background: transparent;
+}
+
+.diff-gutter-insert {
+  background-color: rgba(63, 185, 80, 0.2);
+}
+
+.diff-gutter-delete {
+  background-color: rgba(248, 81, 73, 0.2);
+}
+
+/* Code area styling */
+.diff-code {
+  font-family: ui-monospace, 'Cascadia Code', 'Monaco', monospace;
+  font-size: 13px;
+  line-height: 20px;
+  padding-left: 20px;
+  position: relative;
+}
+
+/* Add +/- prefix using pseudo-elements */
+.diff-code-insert::before {
+  content: '+';
+  position: absolute;
+  left: 8px;
+  color: #3fb950;
+  font-weight: bold;
+  user-select: none;
+}
+
+.diff-code-delete::before {
+  content: '-';
+  position: absolute;
+  left: 8px;
+  color: #f85149;
+  font-weight: bold;
+  user-select: none;
+}
+
+.diff-code-insert {
+  background-color: rgba(63, 185, 80, 0.15);
+}
+
+.diff-code-delete {
+  background-color: rgba(248, 81, 73, 0.15);
+}
+
+.diff-code-normal {
+  padding-left: 8px;
+}
+
+/* Word-level change highlighting */
+.diff-code-insert .diff-code-edit,
+.diff-code-delete .diff-code-edit {
+  background-color: rgba(255, 255, 255, 0.15);
+  font-weight: 600;
+}
+
+.diff-code-insert .diff-code-edit {
+  background-color: rgba(63, 185, 80, 0.4);
+}
+
+.diff-code-delete .diff-code-edit {
+  background-color: rgba(248, 81, 73, 0.4);
+}
+
+/* Hunk header styling */
+.diff-hunk-header {
+  background-color: #21262d;
+  color: #8b949e;
+  padding: 4px 8px;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
